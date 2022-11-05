@@ -1,9 +1,9 @@
-export default function Title() {
+export default function Title({onvan, zironvan}) {
     return(
-        <div>
-            <h1 className="title">This is title from another component</h1>
+        <>
+            <h1 className="title">{onvan}</h1>
             <br />
-            <h2 className="subtitle">This is des for new title</h2>
-        </div>
+            <h2 className="subtitle">{zironvan}</h2>
+        </>
     )
 }

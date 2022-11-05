@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react';
 import Title from './components/Title.js';
+import Modal from './components/Modal.js'
 function App() {
   const [unis , setUnis] = useState([
     {name:'sharif' , id:1},
@@ -17,13 +18,18 @@ function App() {
   }
   return (
     <div className="App">
-      <Title />
+      <Title onvan="this is my Onvan" zironvan="this is my zironvan" />
       {showEvents && unis.map((uni, index) => (
         <div key={uni.id}>
           <h2> shomare {index+1} - {uni.name}</h2>
           <button onClick={() => handleClick(uni.id)}> delete {uni.name}</button>
         </div>
       ))}
+
+      <Modal>
+        <h2>10% OFF !!</h2>
+        <p>use this code to get 10% OFF</p>
+      </Modal>
     </div>
   );
 }
