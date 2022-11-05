@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react'
-
+import {useState} from 'react';
+import Title from './components/Title.js';
 function App() {
   const [unis , setUnis] = useState([
     {name:'sharif' , id:1},
@@ -17,6 +17,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Title />
       {showEvents && unis.map((uni, index) => (
         <div key={uni.id}>
           <h2> shomare {index+1} - {uni.name}</h2>
