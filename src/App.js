@@ -10,15 +10,29 @@ function App() {
     {name:'elmof' ,id:3}
   ])
   const [showEvents , setShowEvents] = useState(true)
+  const [showModal , setShowModal] = useState(false)
+
   const handleClick = (id) =>{
     console.log('clicked on buttin')
     setUnis(unis.filter((uni) => {
       return id !== uni.id
     }))
   }
+
+  const handleClose = () =>{
+    setShowModal(false)
+  }
+
+  const handleOpen = () =>{
+    setShowModal(true)
+  }
+
+  console.log(showModal)
+
   return (
     <div className="App">
-      <Title onvan="this is my Onvan" zironvan="this is my zironvan" />
+      <Title onvan="this is Onvan" zironvan="this is zironvan" />
+      <button onClick={handleOpen}>Show Modal</button>
       {showEvents && unis.map((uni, index) => (
         <div key={uni.id}>
           <h2> shomare {index+1} - {uni.name}</h2>
@@ -26,10 +40,11 @@ function App() {
         </div>
       ))}
 
-      <Modal>
+      {showModal && <Modal handleClose = {handleClose}>
         <h2>10% OFF !!</h2>
         <p>use this code to get 10% OFF</p>
-      </Modal>
+      
+      </Modal>}
     </div>
   );
 }
