@@ -3,14 +3,20 @@ import './App.css';
 import {useState} from 'react';
 import Title from './components/Title.js';
 import Modal from './components/Modal.js'
+import Uni from './components/Unis';
+import NewUniForm from './components/NewUniForm';
 function App() {
-  const [unis , setUnis] = useState([
-    {name:'sharif' , id:1},
-    {name:'tehran' ,id:2},
-    {name:'elmof' ,id:3}
-  ])
+  const [unis , setUnis] = useState([])
   const [showEvents , setShowEvents] = useState(true)
   const [showModal , setShowModal] = useState(false)
+
+  const addUni = (uni) =>{
+    setUnis ((prevUnis) => {
+      return [...prevUnis,uni]
+    })
+    setShowModal(false)
+  }
+
 
   const handleClick = (id) =>{
     console.log('clicked on buttin')
@@ -21,7 +27,7 @@ function App() {
 
   const handleClose = () =>{
     setShowModal(false)
-  }
+  } 
 
   const handleOpen = () =>{
     setShowModal(true)
@@ -32,18 +38,13 @@ function App() {
   return (
     <div className="App">
       <Title onvan="this is Onvan" zironvan="this is zironvan" />
-      <button onClick={handleOpen}>Show Modal</button>
-      {showEvents && unis.map((uni, index) => (
-        <div key={uni.id}>
-          <h2> shomare {index+1} - {uni.name}</h2>
-          <button onClick={() => handleClick(uni.id)}> delete {uni.name}</button>
-        </div>
-      ))}
+
+      <button onClick={handleOpen}>Add new uni</button>
+
+      {showEvents && <Uni unis={unis} handleClick = {handleClick}/> }
 
       {showModal && <Modal handleClose = {handleClose}>
-        <h2>10% OFF !!</h2>
-        <p>use this code to get 10% OFF</p>
-      
+        <NewUniForm addUni={addUni}/>
       </Modal>}
     </div>
   );
