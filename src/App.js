@@ -19,7 +19,7 @@ function App() {
 
 
   const handleClick = (id) =>{
-    console.log('clicked on buttin')
+    console.log('clicked on button')
     setUnis(unis.filter((uni) => {
       return id !== uni.id
     }))

@@ -4,7 +4,8 @@ export default function Uni({unis , handleClick}) {
         <div>
             {unis.map((uni, index) => (
               <div className='card' key={uni.id}>
-                <h2> shomare {index+1} - {uni.name}</h2>
+                <h2> shomare {index+1} - {uni.title}</h2>
+                <p>{uni.location} - {uni.date}</p>
                 <button onClick={() => handleClick(uni.id)}> delete {uni.name}</button>
               </div>
       ))}
